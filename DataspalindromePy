@@ -1,0 +1,27 @@
+from datetime import timedelta, datetime
+
+anos = input('\n\n\tBuscar datas palindrome dentro dos proximos?\n\tanos:')
+
+dM = datetime.now()           # data atual
+
+a = int(anos)                     #em anos
+x = a * 365                   #converte para dias
+z = 0
+h = 0
+
+
+while z <= x:
+    dM = dM + timedelta(days=1)             #data atual + 1 dias
+    dStr = dM.strftime("%d%m%Y")            #criar string dStr (dateString)
+    idStr = dStr[::-1]                      #inverte dStr e armazena em idString (inverted dString)
+    if idStr == dStr:
+        if h == 0:
+            first = dM.strftime("%d/%m/%Y")
+        print(dM.strftime("%d/%m/%Y"), "é palindrome") #caso seja palindrome, imprime na tela
+        h += 1
+    z+=1
+
+
+print("\n\n\tTotal de ", h,"datas palindrome nos próximos", a,"anos")  #total de datas palindromes dentro de "a" anos
+print(f'\tA proxima dada palindrome será {first}')
+resp=input('\n\n Press anything to end\n')
